@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Job's I've Had</title>
+  </head>
+  <body>
+
+
+    <form class="jobs" action="/" method="post">
+        <label for="previous_title">Previous Title</label>
+        <input id="previous_title" type="text" name="previous_title" placeholder="enter your job title">
+
+        <label for="previous_description">Previous Title</label>
+        <input id="previous_description" type="text" name="previous_description" placeholder="enter your job description">
+
+        <label for="previous_pay">Previous Title</label>
+        <input id="previous_pay" type="text" name="previous_pay" placeholder="enter your job pay">
+
+        <label for="reason_for_leaving">Reason for leaving</label>
+        <input id="reason_for_leaving" type="text" name="reason_for_leaving" placeholder="enter your job leaving">
+
+        <button type="submit">Add jobs.</button>
+    </form>
+
+    <h1>These are the jobs I've had.</h1>
+    {% if job_array is not empty %}
+    <p>Here are the jobs you've had:</p>
+    <form action="/clear" method="post" id="clearAllPrevious">
+      <button type="submit" name="delete">Delete all previous jobs.</button>
+    </form>
+    <ul>
+      {% for jobs in job_array %}
+      <li>{{ jobs.getTitle }}</li>
+      <ul>
+        <li>{{ jobs.getDescription }}</li>
+        <li>{{ jobs.getPay }}</li>
+        <li>{{ jobs.getLeaving }}</li>
+      </ul>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </body>
+</html>
